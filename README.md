@@ -6,7 +6,7 @@ Project ini adalah respon atas **Overview Test** dari **Tim Teknologi Global (TT
 
 ```
 dawwas-ttg-overview-test/
-├── 1. frontend-web-sederhana/          # Test Website Perusahaan
+├── 1. frontend-web-sederhana/          # Frontend Login sederhana
 │   ├── index.html                      # Halaman HTML struktur
 │   ├── style.css                       # CSS styling
 │   └── script.js                       # JavaScript functionality
