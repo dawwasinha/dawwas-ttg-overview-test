@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Page loader functionality
     const pageLoader = document.getElementById('pageLoader');
 
-    // Hide page loader after content is loaded
-    window.addEventListener('load', function() {
+      window.addEventListener('load', function() {
         setTimeout(function() {
             pageLoader.classList.add('fade-out');
             setTimeout(function() {
                 pageLoader.style.display = 'none';
             }, 500);
-        }, 1000); // Show loader for at least 1 second
-    });
+        }, 1000);     });
 
-    // Show loader when page is about to unload (refresh, navigate away)
     window.addEventListener('beforeunload', function() {
         pageLoader.classList.remove('fade-out');
         pageLoader.style.display = 'flex';
     });
 
-    // Handle back/forward browser buttons
     window.addEventListener('pageshow', function(event) {
         if (event.persisted) {
             pageLoader.classList.add('fade-out');
@@ -34,14 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const successMessage = document.getElementById('successMessage');
 
-    // Error message elements
-    const fullNameError = document.getElementById('fullNameError');
+      const fullNameError = document.getElementById('fullNameError');
     const emailError = document.getElementById('emailError');
     const passwordError = document.getElementById('passwordError');
     const confirmPasswordError = document.getElementById('confirmPasswordError');
 
-    // Validation functions
-    function validateFullName() {
+        function validateFullName() {
         const fullName = fullNameInput.value.trim();
 
         if (fullName === '') {
@@ -126,26 +119,22 @@ document.addEventListener('DOMContentLoaded', function() {
         successMessage.classList.add('show');
         form.reset();
 
-        // Hide success message after 5 seconds
-        setTimeout(() => {
+          setTimeout(() => {
             successMessage.classList.remove('show');
         }, 5000);
     }
 
-    // Event listeners for real-time validation
-    fullNameInput.addEventListener('blur', validateFullName);
+      fullNameInput.addEventListener('blur', validateFullName);
     emailInput.addEventListener('blur', validateEmail);
     passwordInput.addEventListener('blur', function() {
         validatePassword();
-        // Also revalidate confirm password if it has value
-        if (confirmPasswordInput.value !== '') {
+          if (confirmPasswordInput.value !== '') {
             validateConfirmPassword();
         }
     });
     confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
 
-    // Real-time validation on input (optional, for better UX)
-    fullNameInput.addEventListener('input', function() {
+        fullNameInput.addEventListener('input', function() {
         if (fullNameInput.value.trim() !== '') {
             validateFullName();
         }
@@ -169,8 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission
-    form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         if (validateForm()) {
