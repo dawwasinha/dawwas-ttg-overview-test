@@ -1,167 +1,144 @@
-# Portfolio Project - Fullstack Engineer
+# TTG Overview Test - Technical Assessment
 
-Project ini adalah kumpulan demonstrasi teknis yang saya buat untuk menampilkan kemampuan Fullstack Engineering saya dalam melamar posisi di **Tim Teknologi Global**. Project ini mencakup frontend development, backend API, dan pemecahan masalah algoritma.
+Project ini adalah respon atas **Technical Test** dari **Tim Teknologi Global (TTG)** sebagai bagian dari proses rekrutmen untuk posisi Fullstack Engineer. Test ini dirancang untuk menilai kemampuan teknis, problem solving, dan kualitas kode.
 
-## 🎯 Tujuan Portfolio
+## 📋 Informasi Test
 
-Project ini dibuat khusus untuk:
-- Menunjukkan kemampuan teknis sebagai **Fullstack Engineer**
-- Mendemonstrasikan pengalaman dengan berbagai teknologi web
-- Menampilkan kemampuan dalam problem solving dan algoritma
-- Membuktikan kualitas kode yang clean dan well-documented
-- Menunjukkan kemampuan komunikasi teknis yang baik
+**Company:** PT Tim Teknologi Global (TTG)
+**Position:** Fullstack Engineer
+**Test Duration:** 4 hari (3 Desember - 6 Desember 2024)
+**Submission Deadline:** 6 Desember 2025, pukul 12:00 WIB
+**Submission Email:** hrd@timtekno.id
 
 ## 📁 Struktur Project
 
 ```
 dawwas-ttg-overview-test/
-├── 1. frontend-web-sederhana/          # Frontend Web Application
-│   ├── index.html                      # Main HTML structure
+├── 1. frontend-web-sederhana/          # Test Website Perusahaan
+│   ├── index.html                      # Halaman HTML struktur
 │   ├── style.css                       # CSS styling
 │   └── script.js                       # JavaScript functionality
 │
-├── 2. backend-api-pengguna/             # RESTful API Backend
-│   ├── config/                         # Database & Swagger configs
-│   │   ├── database.js                 # MongoDB configuration
-│   │   ├── database-mysql.js           # MySQL configuration
+├── 2. backend-api-pengguna/             # Test RESTful API
+│   ├── config/                         # Database configurations
+│   │   ├── database.js                 # MongoDB connection
+│   │   ├── database-mysql.js           # MySQL connection
 │   │   └── swagger.js                  # API documentation
 │   ├── models/                         # Data models
-│   │   └── User.js                     # User schema (MongoDB)
+│   │   └── User.js                     # User schema & validation
 │   ├── routes/                         # API endpoints
-│   │   ├── userRoutes.js               # Routes with MongoDB
-│   │   ├── userRoutes-mysql.js         # Routes with MySQL
+│   │   ├── userRoutes.js               # MongoDB routes
+│   │   ├── userRoutes-mysql.js         # MySQL routes
 │   │   └── userRoutes-swagger.js       # Routes with Swagger
-│   ├── package.json                    # Dependencies
-│   ├── server.js                       # Main server (MongoDB)
-│   ├── server-mysql.js                 # Main server (MySQL)
+│   ├── server.js                       # Express server (MongoDB)
+│   ├── server-mysql.js                 # Express server (MySQL)
 │   └── README.md                       # API documentation
 │
-├── 3. cari-angka/                      # Algorithm Problem Solving
+├── 3. cari-angka/                      # Test Soal No. 3
 │   ├── cariAngka.go                    # Go implementation
 │   └── README.md                       # Algorithm explanation
 │
-├── 4. formula-perhitungan/             # Mathematical Formula Solver
+├── 4. formula-perhitungan/             # Test Soal No. 4
 │   ├── formulaPerhitungan.go           # Go implementation
 │   └── README.md                       # Algorithm explanation
 │
+├── "TTG  Overview Test .pdf"           # Test instructions
 └── README.md                           # This file
 ```
 
-## 🚀 Demonstrasi Teknis
+## 🎯 Hasil Pengerjaan Test
 
-### 1. Frontend Development - `1. frontend-web-sederhana`
+### 1. Website Perusahaan Sederhana (Soal No. 1 & 2)
 
-**Teknologi:** HTML5, CSS3, Vanilla JavaScript
+**Requirements:**
+- Struktur website perusahaan dengan menu dan navigasi
+- Section: about, services, contact
+- Form validasi untuk setiap input
+- Popup ketika tombol submit diklik
 
-**Fitur yang ditunjukkan:**
-- **Responsive Design**: Layout yang adaptif untuk berbagai ukuran layar
-- **DOM Manipulation**: Manipulasi elemen HTML secara dinamis
-- **Event Handling**: Implementasi event listeners untuk interaksi user
-- **Async Operations**: Fetch API untuk komunikasi dengan backend
-- **Clean Code Structure**: Organisasi kode yang terstruktur dan maintainable
-- **Error Handling**: Penanganan error yang graceful
+**Implementasi:**
+- ✅ HTML5 semantic structure
+- ✅ Responsive CSS dengan mobile-first approach
+- ✅ JavaScript form validation
+- ✅ Interactive popup modal
+- ✅ Clean dan maintainable code
 
-### 2. Backend Development - `2. backend-api-pengguna`
+### 2. RESTful API Pengguna (Soal No. 3)
 
-**Teknologi:** Node.js, Express, MySQL, MongoDB, Swagger
+**Requirements:**
+- REST API dengan 5 endpoints
+- Database schema untuk model user
+- Input validation untuk setiap endpoint
+- Kustomisasi response format
 
-**Fitur yang ditunjukkan:**
-- **RESTful API Design**: Implementasi best practices API design
-- **Multiple Database Support**: Kemampuan bekerja dengan MySQL dan MongoDB
-- **API Documentation**: Swagger/OpenAPI untuk dokumentasi interaktif
-- **Input Validation**: Validasi data input dengan express-validator
-- **Error Handling**: Centralized error handling dengan response yang konsisten
-- **Environment Configuration**: Penggunaan environment variables
-- **Database Modeling**: Desain schema yang efisien
+**Implementasi:**
+- ✅ Node.js + Express framework
+- ✅ Dukungan dual database (MongoDB & MySQL)
+- ✅ 5 endpoints lengkap (GET, POST, PUT, DELETE, SEARCH)
+- ✅ Input validation dengan express-validator
+- ✅ Error handling yang terstruktur
+- ✅ Swagger documentation
+- ✅ Environment configuration
 
-### 3. Algorithm Problem Solving - `3. cari-angka`
+**Endpoints yang Diimplementasikan:**
+- `GET /users` - Get all users with pagination & filtering
+- `POST /users` - Create user dengan validation
+- `PUT /users/:id` - Update user data
+- `DELETE /users/:id` - Delete user
+- `GET /users/search` - Search users by name/email
 
-**Teknologi:** Go (Golang)
+### 3. Algorithm - Car Missing Number (Soal No. 4)
 
-**Fitur yang ditunjukkan:**
-- **Problem Solving**: Kemampuan menganalisis dan memecahkan masalah
-- **Algorithm Design**: Implementasi algoritma sorting dan searching
-- **Efficiency**: Optimalisasi time complexity O(n log n)
-- **Clean Code**: Kode yang readable dan well-documented
-- **Test Cases**: Multiple scenarios untuk verifikasi
-- **Edge Case Handling**: Penanganan kasus-kasus khusus
+**Requirements:**
+- Function `findMissingNumber([3,0,2,4])` return 1
+- Function `findMissingNumber([3106,3102,3104,3105,3107])` return 3103
 
-### 4. Advanced Algorithm - `4. formula-perhitungan`
+**Implementasi:**
+- ✅ Go programming language
+- ✅ Sorting approach dengan O(n log n) complexity
+- ✅ Edge case handling
+- ✅ Multiple test cases
+- ✅ Clean dan documented code
 
-**Teknologi:** Go (Golang)
+### 4. Algorithm - Formula Calculation (Soal No. 5)
 
-**Fitur yang ditunjukkan:**
-- **Complex Algorithm**: Implementasi brute force dengan optimization
-- **Recursive Programming**: Penggunaan recursive approach
-- **Combinatorics**: Generate semua kemungkinan kombinasi
-- **Mathematical Modeling**: Pemodelan masalah matematika
-- **Performance Analysis**: Understanding time/space complexity
-- **Advanced Debugging**: Teknik debugging untuk algoritma kompleks
+**Requirements:**
+- Function `findFormula([1,4,5,6], 16)` return formula yang sesuai
+- Function `findFormula([1,4,5,6], 18)` return formula yang sesuai
 
-## 💼 Keterampilan yang Ditunjukkan
-
-### Frontend Skills:
-- ✅ HTML5 & Semantic Markup
-- ✅ CSS3 & Responsive Design
-- ✅ Vanilla JavaScript (ES6+)
-- ✅ DOM Manipulation
-- ✅ Event-Driven Programming
-- ✅ Asynchronous Programming
-- ✅ Fetch API & AJAX
-- ✅ Error Handling
-
-### Backend Skills:
-- ✅ Node.js & Express Framework
-- ✅ RESTful API Design
-- ✅ Database Integration (MySQL & MongoDB)
-- ✅ Authentication & Authorization
-- ✅ Input Validation & Sanitization
-- ✅ Error Handling & Logging
-- ✅ API Documentation (Swagger)
-- ✅ Environment Management
-
-### Programming Skills:
-- ✅ Go (Golang) Programming
-- ✅ Algorithm Design & Analysis
-- ✅ Data Structures
-- ✅ Problem Solving
-- ✅ Code Optimization
-- ✅ Testing & Debugging
-- ✅ Clean Code Principles
-- ✅ Documentation Writing
-
-### Soft Skills:
-- ✅ **Technical Communication**: Dokumentasi yang jelas dan detail
-- ✅ **Attention to Detail**: Setiap project memiliki README yang lengkap
-- ✅ **Organization**: Struktur folder yang terorganisir dengan baik
-- ✅ **Best Practices**: Mengikuti industry standard
-- ✅ **Continuous Learning**: Menunjukkan kemampuan adaptasi teknologi
-- ✅ **Code Quality**: Kode yang clean, maintainable, dan well-documented
+**Implementasi:**
+- ✅ Go programming language
+- ✅ Recursive algorithm untuk generate combinations
+- ✅ Parenthesis handling
+- ✅ Brute force dengan optimization
+- ✅ Complex algorithm implementation
 
 ## 🛠️ Cara Menjalankan Project
 
-### Prasyrat:
-- Node.js (v14+) untuk backend
-- MySQL atau MongoDB untuk database
-- Go (v1.16+) untuk algorithm projects
-- Web browser modern untuk frontend
+### Prasyarat:
+- Node.js v14+ untuk backend
+- MySQL atau MongoDB
+- Go v1.16+ untuk algorithm projects
+- Browser modern untuk frontend
 
-### Quick Start:
+### Instructions:
 
-1. **Backend API**:
+1. **Backend API:**
    ```bash
    cd "2. backend-api-pengguna"
    npm install
-   npm start
+   npm start  # Untuk MySQL dengan Swagger
+   # atau
+   node server.js  # Untuk MongoDB
    ```
 
-2. **Frontend**:
+2. **Frontend:**
    ```bash
    cd "1. frontend-web-sederhana"
    # Buka index.html di browser
    ```
 
-3. **Algorithm Projects**:
+3. **Algorithm Projects:**
    ```bash
    cd "3. cari-angka"
    go run cariAngka.go
@@ -170,104 +147,80 @@ dawwas-ttg-overview-test/
    go run formulaPerhitungan.go
    ```
 
-## 📊 Project Highlights
+## 📊 Additional Implementations
 
-### Technical Excellence:
-- **Clean Architecture**: Struktur yang terorganisir dan scalable
-- **Comprehensive Documentation**: README detail untuk setiap project
-- **Error Handling**: Robust error management di semua layers
-- **Security**: Input validation dan sanitization
-- **Performance**: Algoritma yang efficient dengan complexity analysis
+### Fitur Tambahan di Backend API:
+- **Dual Database Support**: MongoDB dan MySQL
+- **API Documentation**: Swagger/OpenAPI 3.0
+- **Comprehensive Validation**: Email format, field lengths, required fields
+- **Error Handling**: Centralized error middleware
+- **Environment Variables**: Secure configuration management
+- **Search Functionality**: Advanced user search capabilities
 
-### Problem Solving:
-- **Algorithmic Thinking**: Kemampuan memecahkan masalah kompleks
-- **System Design**: Arsitektur backend yang solid
-- **Integration**: Koneksi antara frontend dan backend
-- **Optimization**: Berbagai teknik optimasi performa
+### Kode Quality:
+- **No Comments**: Sesuai instruksi test
+- **Comprehensive Documentation**: README untuk setiap project
+- **Clean Architecture**: Struktur folder yang terorganisir
+- **Best Practices**: Mengikuti industry standards
+- **Error Scenarios**: Handling edge cases dan error conditions
 
-### Code Quality:
-- **Maintainable**: Kode yang mudah dibaca dan dimaintain
-- **Testable**: Struktur yang memudahkan testing
-- **Scalable**: Design yang dapat dikembangkan
-- **Standards**: Mengikuti best practices dan coding standards
+## ⏱️ Time Management
 
-## 🎯 Relevansi dengan Posisi Fullstack Engineer
+Test diselesaikan dalam waktu yang tersedia dengan fokus pada:
+1. **Kualitas**: Clean code dan proper documentation
+2. **Requirements**: Memenuhi semua spesifikasi yang diminta
+3. **Best Practices**: Mengimplementasikan industry standards
+4. **Completeness**: Backend, frontend, dan algorithms fully functional
 
-### Frontend Competency:
-Project `frontend-web-sederhana` menunjukkan kemampuan:
-- Building responsive, interactive web applications
-- Managing state and handling user interactions
-- Implementing modern JavaScript features
-- Creating clean, maintainable frontend code
+## 📤 Submission Information
 
-### Backend Competency:
-Project `backend-api-pengguna` menunjukkan kemampuan:
-- Designing and implementing RESTful APIs
-- Working with multiple databases (SQL & NoSQL)
-- Implementing authentication and validation
-- Creating comprehensive API documentation
+**Cara Submit:**
+1. Upload hasil test ke Github
+2. Pastikan semua project dapat di-run dengan mudah
 
-### Problem Solving:
-Algorithm projects menunjukkan kemampuan:
-- Breaking down complex problems
-- Implementing efficient algorithms
-- Analyzing and optimizing performance
-- Writing clean, documented code
+**Yang Telah Dilakukan:**
+- ✅ Semua soal diimplementasikan sesuai requirements
+- ✅ Kode bersih tanpa komentar (sesuai instruksi)
+- ✅ Documentation lengkap untuk setiap project
+- ✅ Error handling dan edge case coverage
+- ✅ Clean architecture dan best practices
 
-## 💡 Inisiatif Tambahan
+## 🎯 Highlights Teknis
 
-Setiap project dalam portfolio ini memiliki:
-- **Comprehensive README**: Dokumentasi yang sangat detail
-- **Algorithm Analysis**: Penjelasan time/space complexity
-- **Use Cases**: Contoh penggunaan praktis
-- **Optimization Ideas**: Ide untuk improvement
-- **Educational Value**: Penjelasan konsep teknis
+### Frontend Development:
+- **Modern JavaScript**: ES6+ features
+- **Responsive Design**: Mobile-first CSS
+- **Form Validation**: Client-side validation
+- **Interactive Elements**: Modal dan dynamic content
+- **Clean HTML**: Semantic markup
 
-## 📈 Konteks Industri
+### Backend Development:
+- **RESTful Design**: Proper HTTP methods dan status codes
+- **Database Integration**: Multiple database support
+- **Input Validation**: Comprehensive validation rules
+- **API Documentation**: Interactive Swagger UI
+- **Error Handling**: Structured error responses
 
-Project-project ini relevan dengan industri teknologi karena:
-- **Web Applications**: Frontend dan backend development
-- **API Design**: RESTful API yang modern
-- **Data Management**: Database integration dan modeling
-- **Performance**: Optimization dan scalability considerations
-- **Documentation**: Critical untuk team collaboration
-- **Testing**: Multiple test cases dan scenarios
-
-## 🔮 Potential Extensions
-
-Ide untuk pengembangan lanjutan:
-1. **Deployment**: Docker containers dan CI/CD pipeline
-2. **Authentication**: JWT atau OAuth implementation
-3. **Microservices**: Split backend menjadi microservices
-4. **Real-time**: WebSocket untuk real-time features
-5. **Testing**: Unit dan integration tests
-6. **Monitoring**: Application monitoring dan logging
-7. **Caching**: Redis atau caching layers
-8. **CDN**: Static asset delivery optimization
-
-## 📞 Kontak
-
-Untuk diskusi lebih lanjut tentang:
-- Teknis implementasi
-- Design decisions
-- Code review
-- Collaborative opportunities
-
-**Email**: [your-email@example.com]
-**LinkedIn**: [linkedin.com/in/yourprofile]
-**GitHub**: [github.com/yourusername]
+### Algorithm Implementation:
+- **Efficiency**: Optimal time complexity
+- **Problem Solving**: Complex algorithmic challenges
+- **Clean Code**: Well-structured Go code
+- **Testing**: Multiple test cases
+- **Documentation**: Algorithm explanations
 
 ---
 
-## 📝 Catatan Akhir
+## 📝 Catatan Final
 
-Portfolio ini adalah representasi dari dedikasi saya terhadap:
-- **Kualitas**: Kode yang clean dan well-tested
-- **Dokumentasi**: Communication yang jelas dan terstruktur
-- **Problem Solving**: Analytical thinking yang kuat
-- **Continuous Learning**: Adaptasi dengan teknologi baru
-- **Collaboration**: Ability untuk work independently dan dalam team
+Project ini merupakan demonstrasi kemampuan teknis untuk posisi Fullstack Engineer di PT Tim Teknologi Global. Implementasi fokus pada:
+- **Code Quality**: Clean, maintainable, dan documented code
+- **Requirements Fulfillment**: Memenuhi semua spesifikasi test
+- **Technical Excellence**: Best practices dan industry standards
+- **Problem Solving**: Complex technical challenges
+- **Communication**: Jelas dan terstruktur documentation
 
-Saya bersemangat untuk membawa kemampuan teknis dan problem solving skills ke **Tim Teknologi Global** dan berkontribusi pada development solutions yang impactful dan scalable.
+Terima kasih atas kesempatan test ini dan semoga implementasi ini memenuhi standar PT Tim Teknologi Global.
 
-*"Good code is its own best documentation" - As Steve McConnell*
+**Best Regards,**
+**Dawwas Inha Ulhaq**
+*Fullstack Engineer Applicant*
