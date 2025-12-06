@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Validasi untuk express-validator
 const userValidationRules = [
   body('name')
     .notEmpty()

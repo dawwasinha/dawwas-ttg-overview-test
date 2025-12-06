@@ -10,21 +10,15 @@ const dbConfig = {
   queueLimit: 0
 };
 
-// Create connection pool
 const pool = mysql.createPool(dbConfig);
 
-// Function to initialize database and create table if not exists
 const initDB = async () => {
   try {
     const connection = await pool.getConnection();
 
-    // Create database if not exists
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME || 'api_pengguna'}`);
+        await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME || 'api_pengguna'}`);
 
-    // Switch to the database
     await connection.query(`USE ${process.env.DB_NAME || 'api_pengguna'}`);
-
-    // Create users table if not exists
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,

@@ -5,7 +5,6 @@ const { pool } = require('../config/database-mysql');
 
 const router = express.Router();
 
-// Validasi rules untuk user
 const userValidationRules = [
   body('name')
     .notEmpty()
@@ -23,7 +22,6 @@ const userValidationRules = [
     .withMessage('Usia harus antara 1-120 tahun')
 ];
 
-// Middleware untuk validasi
 const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -36,12 +34,10 @@ const validateRequest = (req, res, next) => {
   next();
 };
 
-// POST /users - Menambahkan pengguna baru
 router.post('/', userValidationRules, validateRequest, async (req, res) => {
   try {
     const { name, email, age } = req.body;
 
-    // Cek apakah email sudah ada
     const [existingUsers] = await pool.execute(
       'SELECT id FROM users WHERE email = ?',
       [email]
@@ -54,13 +50,11 @@ router.post('/', userValidationRules, validateRequest, async (req, res) => {
       });
     }
 
-    // Insert user baru
     const [result] = await pool.execute(
       'INSERT INTO users (name, email, age) VALUES (?, ?, ?)',
       [name, email, age]
     );
 
-    // Ambil user yang baru ditambahkan
     const [newUser] = await pool.execute(
       'SELECT * FROM users WHERE id = ?',
       [result.insertId]
@@ -87,7 +81,6 @@ router.post('/', userValidationRules, validateRequest, async (req, res) => {
   }
 });
 
-// GET /users - Mengambil daftar seluruh pengguna
 router.get('/', async (req, res) => {
   try {
     const [users] = await pool.execute('SELECT * FROM users ORDER BY created_at DESC');
@@ -107,12 +100,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /users/:id - Mengambil data pengguna berdasarkan ID
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validasi ID harus angka
     if (!/^\d+$/.test(id)) {
       return res.status(400).json({
         success: false,
@@ -143,12 +134,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// DELETE /users/:id - Menghapus pengguna berdasarkan ID
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validasi ID harus angka
     if (!/^\d+$/.test(id)) {
       return res.status(400).json({
         success: false,
@@ -156,7 +145,6 @@ router.delete('/:id', async (req, res) => {
       });
     }
 
-    // Cek apakah user exists
     const [users] = await pool.execute('SELECT * FROM users WHERE id = ?', [id]);
 
     if (users.length === 0) {
@@ -166,7 +154,6 @@ router.delete('/:id', async (req, res) => {
       });
     }
 
-    // Hapus user
     await pool.execute('DELETE FROM users WHERE id = ?', [id]);
 
     res.status(200).json({

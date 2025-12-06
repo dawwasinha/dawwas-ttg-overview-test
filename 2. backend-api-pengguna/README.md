@@ -1,6 +1,6 @@
-# API Pengguna dengan Express dan MySQL
+# Backend API Pengguna
 
-API untuk manajemen data pengguna menggunakan Node.js, Express, dan MySQL.
+Project API untuk manajemen data pengguna yang dibangun dengan Node.js dan Express. Project ini mendukung dua database: MongoDB dan MySQL.
 
 ## Fitur
 
@@ -8,13 +8,16 @@ API untuk manajemen data pengguna menggunakan Node.js, Express, dan MySQL.
 - ✅ **GET /users** - Mengambil semua pengguna
 - ✅ **GET /users/:id** - Mengambil pengguna berdasarkan ID
 - ✅ **DELETE /users/:id** - Menghapus pengguna berdasarkan ID
+- ✅ **Validasi input** - Validasi nama, email, dan usia
 - ✅ **Validasi email unik** - Email harus unik dalam database
-- ✅ **Validasi format JSON** - Data yang dikirim harus berformat JSON
+- ✅ **Error handling** - Penanganan error yang baik
+- ✅ **Swagger Documentation** - Dokumentasi API interaktif (untuk versi MySQL)
 
 ## Requirements
 
 - Node.js (v14 atau lebih tinggi)
-- MongoDB
+- MongoDB (untuk versi MongoDB)
+- MySQL (untuk versi MySQL)
 - npm atau yarn
 
 ## Installation
@@ -26,25 +29,36 @@ API untuk manajemen data pengguna menggunakan Node.js, Express, dan MySQL.
    ```
 
 3. Setup environment variables:
-   ```bash
-   cp .env.example .env
-   ```
-   Edit file `.env` sesuai konfigurasi MongoDB Anda:
-   ```
-   PORT=3000
+   Buat file `.env` di root project:
+   ```env
+   # Untuk versi MongoDB
    MONGODB_URI=mongodb://localhost:27017/api_pengguna
+
+   # Untuk versi MySQL
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=
+   DB_NAME=api_pengguna
+
+   # Server port
+   PORT=3000
    ```
 
-4. Jalankan server:
-   ```bash
-   npm run dev
-   ```
-   atau untuk production:
-   ```bash
-   npm start
-   ```
+## Menjalankan Server
+
+### Versi MongoDB
+```bash
+node server.js
+```
+
+### Versi MySQL dengan Swagger Documentation
+```bash
+node server-mysql.js
+```
 
 Server akan berjalan di `http://localhost:3000`
+
+Jika menggunakan versi MySQL, akses Swagger documentation di: `http://localhost:3000/api-docs`
 
 ## API Endpoints
 
@@ -71,21 +85,13 @@ http://localhost:3000
   "success": true,
   "message": "Pengguna berhasil ditambahkan",
   "data": {
-    "_id": "64a8b1c2d3e4f5g6h7i8j9k0",
+    "id": 1,
     "name": "John Doe",
     "email": "john@example.com",
     "age": 25,
-    "createdAt": "2023-07-07T12:34:56.789Z",
-    "updatedAt": "2023-07-07T12:34:56.789Z"
+    "created_at": "2023-07-07T12:34:56.789Z",
+    "updated_at": "2023-07-07T12:34:56.789Z"
   }
-}
-```
-
-**Error Response (400):**
-```json
-{
-  "success": false,
-  "message": "Email sudah digunakan"
 }
 ```
 
@@ -99,12 +105,12 @@ http://localhost:3000
   "message": "Daftar pengguna berhasil diambil",
   "data": [
     {
-      "_id": "64a8b1c2d3e4f5g6h7i8j9k0",
+      "id": 1,
       "name": "John Doe",
       "email": "john@example.com",
       "age": 25,
-      "createdAt": "2023-07-07T12:34:56.789Z",
-      "updatedAt": "2023-07-07T12:34:56.789Z"
+      "created_at": "2023-07-07T12:34:56.789Z",
+      "updated_at": "2023-07-07T12:34:56.789Z"
     }
   ],
   "total": 1
@@ -120,21 +126,13 @@ http://localhost:3000
   "success": true,
   "message": "Data pengguna berhasil diambil",
   "data": {
-    "_id": "64a8b1c2d3e4f5g6h7i8j9k0",
+    "id": 1,
     "name": "John Doe",
     "email": "john@example.com",
     "age": 25,
-    "createdAt": "2023-07-07T12:34:56.789Z",
-    "updatedAt": "2023-07-07T12:34:56.789Z"
+    "created_at": "2023-07-07T12:34:56.789Z",
+    "updated_at": "2023-07-07T12:34:56.789Z"
   }
-}
-```
-
-**Error Response (404):**
-```json
-{
-  "success": false,
-  "message": "Pengguna tidak ditemukan"
 }
 ```
 
@@ -147,28 +145,28 @@ http://localhost:3000
   "success": true,
   "message": "Pengguna berhasil dihapus",
   "data": {
-    "_id": "64a8b1c2d3e4f5g6h7i8j9k0",
+    "id": 1,
     "name": "John Doe",
     "email": "john@example.com",
     "age": 25,
-    "createdAt": "2023-07-07T12:34:56.789Z",
-    "updatedAt": "2023-07-07T12:34:56.789Z"
+    "created_at": "2023-07-07T12:34:56.789Z",
+    "updated_at": "2023-07-07T12:34:56.789Z"
   }
 }
 ```
 
 ## Validasi
 
-### Validasi Input
+### Aturan Validasi
 - **Name**: Wajib diisi, panjang 2-50 karakter
 - **Email**: Wajib diisi, format email valid, harus unik
 - **Age**: Wajib diisi, angka antara 1-120
 
-### Error Response Format
+### Format Error Response
 ```json
 {
   "success": false,
-  "message": "Deskripsi error",
+  "message": "Validasi gagal",
   "errors": [
     {
       "field": "email",
@@ -176,6 +174,27 @@ http://localhost:3000
     }
   ]
 }
+```
+
+## Struktur Project
+
+```
+backend-api-pengguna/
+├── config/
+│   ├── database.js          # Konfigurasi koneksi MongoDB
+│   ├── database-mysql.js    # Konfigurasi koneksi MySQL
+│   └── swagger.js           # Konfigurasi Swagger documentation
+├── models/
+│   └── User.js              # Schema dan validasi model User (MongoDB)
+├── routes/
+│   ├── userRoutes.js        # Route handlers untuk API MongoDB
+│   ├── userRoutes-mysql.js  # Route handlers untuk API MySQL
+│   └── userRoutes-swagger.js # Route handlers dengan Swagger annotation
+├── .env                     # Environment variables
+├── package.json             # Project dependencies
+├── server.js                # Main server file (MongoDB)
+├── server-mysql.js          # Main server file (MySQL)
+└── README.md                # Dokumentasi API
 ```
 
 ## Contoh Penggunaan dengan cURL
@@ -198,33 +217,17 @@ curl http://localhost:3000/users
 
 ### Ambil Pengguna Berdasarkan ID
 ```bash
-curl http://localhost:3000/users/64a8b1c2d3e4f5g6h7i8j9k0
+curl http://localhost:3000/users/1
 ```
 
 ### Hapus Pengguna
 ```bash
-curl -X DELETE http://localhost:3000/users/64a8b1c2d3e4f5g6h7i8j9k0
-```
-
-## Project Structure
-
-```
-backend-api-pengguna/
-├── config/
-│   └── database.js      # Konfigurasi koneksi MongoDB
-├── models/
-│   └── User.js          # Schema dan validasi model User
-├── routes/
-│   └── userRoutes.js    # Route handlers untuk API
-├── .env                 # Environment variables
-├── package.json         # Project dependencies
-├── server.js            # Main server file
-└── README.md            # Dokumentasi API
+curl -X DELETE http://localhost:3000/users/1
 ```
 
 ## Swagger Documentation
 
-API Pengguna dilengkapi dengan dokumentasi Swagger yang dapat diakses di:
+API versi MySQL dilengkapi dengan dokumentasi Swagger yang dapat diakses di:
 ```
 http://localhost:3000/api-docs
 ```
@@ -235,22 +238,32 @@ http://localhost:3000/api-docs
 - 📋 **Schema Documentation** - Validasi data input dan output
 - 🔗 **API Reference** - Referensi lengkap semua endpoint
 
-### Swagger Schema Components
-- **User** - Schema model data pengguna
-- **CreateUserRequest** - Schema request untuk membuat pengguna baru
-- **SuccessResponse** - Schema response sukses
-- **ErrorResponse** - Schema response error
+## Perbedaan Versi MongoDB dan MySQL
 
-### Konfigurasi Swagger
-- **OpenAPI Version**: 3.0.0
-- **Server URL**: http://localhost:3000
-- **API Version**: 1.0.0
-- **Description**: API untuk manajemen data pengguna menggunakan Express dan MySQL
+### MongoDB
+- Menggunakan Mongoose ODM
+- ID menggunakan ObjectId (24 karakter hex)
+- Timestamps otomatis dengan `timestamps: true`
+- Error handling untuk duplicate key (code: 11000)
 
-### Cara Mengakses Swagger
-1. Jalankan server: `npm start`
-2. Buka browser dan akses: `http://localhost:3000/api-docs`
-3. Gunakan fitur "Try it out" untuk testing API langsung
+### MySQL
+- Menggunakan mysql2 library
+- ID menggunakan auto-increment integer
+- Timestamps dengan `DEFAULT CURRENT_TIMESTAMP`
+- Error handling untuk duplicate entry (code: 'ER_DUP_ENTRY')
+- Dilengkapi dengan Swagger documentation
+
+## Development
+
+### Menambahkan Endpoint Baru
+1. Buat route handler di folder `routes/`
+2. Tambahkan validasi jika diperlukan
+3. Untuk versi MySQL, tambahkan Swagger annotation
+4. Import dan gunakan route di server file
+
+### Script yang Tersedia
+- `npm start` - Menjalankan server dengan nodemon
+- `npm test` - Menjalankan test (jika ada)
 
 ## License
 

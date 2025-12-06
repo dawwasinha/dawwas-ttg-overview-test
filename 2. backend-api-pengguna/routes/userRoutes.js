@@ -5,7 +5,6 @@ const { User, userValidationRules } = require('../models/User');
 
 const router = express.Router();
 
-// Middleware untuk validasi
 const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -18,12 +17,10 @@ const validateRequest = (req, res, next) => {
   next();
 };
 
-// POST /users - Menambahkan pengguna baru
 router.post('/', userValidationRules, validateRequest, async (req, res) => {
   try {
     const { name, email, age } = req.body;
 
-    // Cek apakah email sudah ada
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -32,7 +29,6 @@ router.post('/', userValidationRules, validateRequest, async (req, res) => {
       });
     }
 
-    // Buat user baru
     const user = new User({
       name,
       email,
@@ -48,7 +44,6 @@ router.post('/', userValidationRules, validateRequest, async (req, res) => {
     });
   } catch (error) {
     if (error.code === 11000) {
-      // Handle duplicate key error (email unik)
       return res.status(400).json({
         success: false,
         message: 'Email sudah digunakan'
@@ -63,7 +58,6 @@ router.post('/', userValidationRules, validateRequest, async (req, res) => {
   }
 });
 
-// GET /users - Mengambil daftar seluruh pengguna
 router.get('/', async (req, res) => {
   try {
     const users = await User.find().select('-__v');
@@ -83,12 +77,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /users/:id - Mengambil data pengguna berdasarkan ID
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validasi ID
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
@@ -119,12 +111,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// DELETE /users/:id - Menghapus pengguna berdasarkan ID
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validasi ID
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
