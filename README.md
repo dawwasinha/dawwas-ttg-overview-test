@@ -1,6 +1,6 @@
-# TTG Overview Test - Technical Assessment
+# Tim Teknologi Global Overview Test
 
-Project ini adalah respon atas **Technical Test** dari **Tim Teknologi Global (TTG)** sebagai bagian dari proses rekrutmen untuk posisi Fullstack Engineer.
+Project ini adalah respon atas **Overview Test** dari **Tim Teknologi Global (TTG)** sebagai bagian dari proses rekrutmen untuk posisi Fullstack Engineer.
 
 ## 📁 Struktur Project
 
