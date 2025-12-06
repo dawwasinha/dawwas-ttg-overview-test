@@ -1,14 +1,6 @@
 # TTG Overview Test - Technical Assessment
 
-Project ini adalah respon atas **Technical Test** dari **Tim Teknologi Global (TTG)** sebagai bagian dari proses rekrutmen untuk posisi Fullstack Engineer. Test ini dirancang untuk menilai kemampuan teknis, problem solving, dan kualitas kode.
-
-## 📋 Informasi Test
-
-**Company:** PT Tim Teknologi Global (TTG)
-**Position:** Fullstack Engineer
-**Test Duration:** 4 hari (3 Desember - 6 Desember 2024)
-**Submission Deadline:** 6 Desember 2025, pukul 12:00 WIB
-**Submission Email:** hrd@timtekno.id
+Project ini adalah respon atas **Technical Test** dari **Tim Teknologi Global (TTG)** sebagai bagian dari proses rekrutmen untuk posisi Fullstack Engineer.
 
 ## 📁 Struktur Project
 
@@ -48,22 +40,18 @@ dawwas-ttg-overview-test/
 
 ## 🎯 Hasil Pengerjaan Test
 
-### 1. Website Perusahaan Sederhana (Soal No. 1 & 2)
+### 1. Frontend Login Sederhana (Soal No. 1)
 
 **Requirements:**
-- Struktur website perusahaan dengan menu dan navigasi
-- Section: about, services, contact
 - Form validasi untuk setiap input
-- Popup ketika tombol submit diklik
+- Section response ketika tombol submit diklik
 
 **Implementasi:**
 - ✅ HTML5 semantic structure
 - ✅ Responsive CSS dengan mobile-first approach
 - ✅ JavaScript form validation
-- ✅ Interactive popup modal
-- ✅ Clean dan maintainable code
 
-### 2. RESTful API Pengguna (Soal No. 3)
+### 2. RESTful API Pengguna (Soal No. 2)
 
 **Requirements:**
 - REST API dengan 5 endpoints
@@ -74,7 +62,7 @@ dawwas-ttg-overview-test/
 **Implementasi:**
 - ✅ Node.js + Express framework
 - ✅ Dukungan dual database (MongoDB & MySQL)
-- ✅ 5 endpoints lengkap (GET, POST, PUT, DELETE, SEARCH)
+- ✅ 4 endpoints lengkap (GET, POST, DELETE, SEARCH)
 - ✅ Input validation dengan express-validator
 - ✅ Error handling yang terstruktur
 - ✅ Swagger documentation
@@ -83,11 +71,10 @@ dawwas-ttg-overview-test/
 **Endpoints yang Diimplementasikan:**
 - `GET /users` - Get all users with pagination & filtering
 - `POST /users` - Create user dengan validation
-- `PUT /users/:id` - Update user data
 - `DELETE /users/:id` - Delete user
-- `GET /users/search` - Search users by name/email
+- `GET /users/search` - Search users by id
 
-### 3. Algorithm - Car Missing Number (Soal No. 4)
+### 3. Algorithm - Car Missing Number (Soal No. 3)
 
 **Requirements:**
 - Function `findMissingNumber([3,0,2,4])` return 1
@@ -100,7 +87,7 @@ dawwas-ttg-overview-test/
 - ✅ Multiple test cases
 - ✅ Clean dan documented code
 
-### 4. Algorithm - Formula Calculation (Soal No. 5)
+### 4. Algorithm - Formula Calculation (Soal No. 4)
 
 **Requirements:**
 - Function `findFormula([1,4,5,6], 16)` return formula yang sesuai
